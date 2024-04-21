@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "349709842275",
+    "project_id": "uolo-6b0e9",
+    "storage_bucket": "uolo-6b0e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349709842275:android:88e60dbf591db4c4c84556",
+        "android_client_info": {
+          "package_name": "com.uolo.user"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsKYkb4r9kQjiWIHMcHX8XQ9RGtpiUuf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

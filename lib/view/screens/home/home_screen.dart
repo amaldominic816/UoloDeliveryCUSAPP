@@ -351,14 +351,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(0),
                           boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), spreadRadius: 1, blurRadius: 5, offset: const Offset(2, 3))],
                         ),
-                        child: Row(children: [
+                        child: Row(
+
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          
+                          children: [
 
                           InkWell(
                             onTap: () => splashController.removeModule(),
-                            child: Image.asset(Images.moduleIcon, height: 25, width: 25, color: Theme.of(context).textTheme.bodyLarge!.color),
+                            child: Image.asset(Images.moduleIcon, height: 100, width: 25, color: Theme.of(context).textTheme.bodyLarge!.color),
                           ),
+                          SizedBox(width: 10,),
 
-
+Expanded(child: Text(
+                            Get.find<SplashController>().configModel!.moduleConfig!.module!.showRestaurantText!
+                                ? 'search_food_or_restaurant'.tr : 'search_item_or_store'.tr,
+                            style: robotoRegular.copyWith(
+                              fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor,
+                            ),
+                          )),
 
 
                           Icon(
@@ -366,13 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Theme.of(context).primaryColor,
                           ),
                           const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                          Expanded(child: Text(
-                            Get.find<SplashController>().configModel!.moduleConfig!.module!.showRestaurantText!
-                                ? 'search_food_or_restaurant'.tr : 'search_item_or_store'.tr,
-                            style: robotoRegular.copyWith(
-                              fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor,
-                            ),
-                          )),
+                          
                         ]),
                       ),
                     ),

@@ -22,7 +22,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  final String number;
+  const SignUpScreen({Key? key, required this.number}) : super(key: key);
 
   @override
   SignUpScreenState createState() => SignUpScreenState();
@@ -160,22 +161,22 @@ class SignUpScreenState extends State<SignUpScreen> {
                           ) : const SizedBox(),
                           SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
 
-                          Expanded(
-                            child: CustomTextField(
-                              titleText: ResponsiveHelper.isDesktop(context) ? 'phone'.tr : 'enter_phone_number'.tr,
-                              controller: _phoneController,
-                              focusNode: _phoneFocus,
-                              nextFocus: ResponsiveHelper.isDesktop(context) ? _passwordFocus : _emailFocus,
-                              inputType: TextInputType.phone,
-                              isPhone: true,
-                              showTitle: ResponsiveHelper.isDesktop(context),
-                              onCountryChanged: (CountryCode countryCode) {
-                                _countryDialCode = countryCode.dialCode;
-                              },
-                              countryDialCode: _countryDialCode != null ? CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).code
-                                  : Get.find<LocalizationController>().locale.countryCode,
-                            ),
-                          ),
+                          // Expanded(
+                          //   child: CustomTextField(
+                          //     titleText: ResponsiveHelper.isDesktop(context) ? 'phone'.tr : 'enter_phone_number'.tr,
+                          //     controller: _phoneController,
+                          //     focusNode: _phoneFocus,
+                          //     nextFocus: ResponsiveHelper.isDesktop(context) ? _passwordFocus : _emailFocus,
+                          //     inputType: TextInputType.phone,
+                          //     isPhone: true,
+                          //     showTitle: ResponsiveHelper.isDesktop(context),
+                          //     onCountryChanged: (CountryCode countryCode) {
+                          //       _countryDialCode = countryCode.dialCode;
+                          //     },
+                          //     countryDialCode: _countryDialCode != null ? CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).code
+                          //         : Get.find<LocalizationController>().locale.countryCode,
+                          //   ),
+                          // ),
 
                         ]),
                         const SizedBox(height: Dimensions.paddingSizeLarge),
@@ -192,67 +193,69 @@ class SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
 
                         Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Expanded(
-                            child: Column(children: [
-                              CustomTextField(
-                                titleText: 'password'.tr,
-                                hintText: '8_character'.tr,
-                                controller: _passwordController,
-                                focusNode: _passwordFocus,
-                                nextFocus: _confirmPasswordFocus,
-                                inputType: TextInputType.visiblePassword,
-                                prefixIcon: Icons.lock,
-                                isPassword: true,
-                                showTitle: ResponsiveHelper.isDesktop(context),
-                                // onChanged: (value){
-                                //   if(value != null && value.isNotEmpty){
-                                //     if(!authController.showPassView){
-                                //       authController.showHidePass();
-                                //     }
-                                //     authController.validPassCheck(value);
-                                //   }else{
-                                //     if(authController.showPassView){
-                                //       authController.showHidePass();
-                                //     }
-                                //   }
-                                // },
-                              ),
+                          // Expanded(
+                          //   child: Column(children: [
+                          //     CustomTextField(
+                          //       titleText: 'password'.tr,
+                          //       hintText: '8_character'.tr,
+                          //       controller: _passwordController,
+                          //       focusNode: _passwordFocus,
+                          //       nextFocus: _confirmPasswordFocus,
+                          //       inputType: TextInputType.visiblePassword,
+                          //       prefixIcon: Icons.lock,
+                          //       isPassword: true,
+                          //       showTitle: ResponsiveHelper.isDesktop(context),
+                          //       // onChanged: (value){
+                          //       //   if(value != null && value.isNotEmpty){
+                          //       //     if(!authController.showPassView){
+                          //       //       authController.showHidePass();
+                          //       //     }
+                          //       //     authController.validPassCheck(value);
+                          //       //   }else{
+                          //       //     if(authController.showPassView){
+                          //       //       authController.showHidePass();
+                          //       //     }
+                          //       //   }
+                          //       // },
+                          //     ),
 
-                              // authController.showPassView ? const PassView() : const SizedBox(),
-                            ]),
-                          ),
+                          //     // authController.showPassView ? const PassView() : const SizedBox(),
+                          //   ]),
+                          // ),
                           SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
 
-                          ResponsiveHelper.isDesktop(context) ? Expanded(child: CustomTextField(
-                            titleText: 'confirm_password'.tr,
-                            hintText: '8_character'.tr,
-                            controller: _confirmPasswordController,
-                            focusNode: _confirmPasswordFocus,
-                            nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
-                            inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
-                            inputType: TextInputType.visiblePassword,
-                            prefixIcon: Icons.lock,
-                            isPassword: true,
-                            showTitle: ResponsiveHelper.isDesktop(context),
-                            onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
-                          )) : const SizedBox()
+                          // ResponsiveHelper.isDesktop(context) ? Expanded(child: CustomTextField(
+                          //   titleText: 'confirm_password'.tr,
+                          //   hintText: '8_character'.tr,
+                          //   controller: _confirmPasswordController,
+                          //   focusNode: _confirmPasswordFocus,
+                          //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
+                          //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
+                          //   inputType: TextInputType.visiblePassword,
+                          //   prefixIcon: Icons.lock,
+                          //   isPassword: true,
+                          //   showTitle: ResponsiveHelper.isDesktop(context),
+                          //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
+                          // )) : const SizedBox()
 
                         ]),
                         const SizedBox(height: Dimensions.paddingSizeLarge),
 
-                        !ResponsiveHelper.isDesktop(context) ? CustomTextField(
-                          titleText: 'confirm_password'.tr,
-                          hintText: '8_character'.tr,
-                          controller: _confirmPasswordController,
-                          focusNode: _confirmPasswordFocus,
-                          nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
-                          inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
-                          inputType: TextInputType.visiblePassword,
-                          prefixIcon: Icons.lock,
-                          isPassword: true,
-                          onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
-                        ) : const SizedBox(),
-                        SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
+                        !ResponsiveHelper.isDesktop(context) ?
+                        //  CustomTextField(
+                        //   titleText: 'confirm_password'.tr,
+                        //   hintText: '8_character'.tr,
+                        //   controller: _confirmPasswordController,
+                        //   focusNode: _confirmPasswordFocus,
+                        //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
+                        //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
+                        //   inputType: TextInputType.visiblePassword,
+                        //   prefixIcon: Icons.lock,
+                        //   isPassword: true,
+                        //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
+                        // ) 
+                        // : const SizedBox(),
+                        // SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
 
                         (Get.find<SplashController>().configModel!.refEarningStatus == 1 ) ? CustomTextField(
                           titleText: 'refer_code'.tr,
@@ -265,7 +268,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                           prefixImage: Images.referCode,
                           prefixSize: 14,
                           showTitle: ResponsiveHelper.isDesktop(context),
-                        ) : const SizedBox(),
+                        ) : const SizedBox() :
                         const SizedBox(height: Dimensions.paddingSizeLarge),
 
                         ConditionCheckBox(authController: authController, fromSignUp: true),
@@ -325,12 +328,13 @@ class SignUpScreenState extends State<SignUpScreen> {
     String firstName = _firstNameController.text.trim();
     String lastName = _lastNameController.text.trim();
     String email = _emailController.text.trim();
-    String number = _phoneController.text.trim();
+    // String number = _phoneController.text.trim();
+    String number = widget.number;
     String password = _passwordController.text.trim();
     String confirmPassword = _confirmPasswordController.text.trim();
     String referCode = _referCodeController.text.trim();
 
-    String numberWithCountryCode = countryCode+number;
+    String numberWithCountryCode = number;
     PhoneValid phoneValid = await CustomValidator.isPhoneValid(numberWithCountryCode);
     numberWithCountryCode = phoneValid.phone;
 
@@ -364,7 +368,28 @@ class SignUpScreenState extends State<SignUpScreen> {
             String data = base64Encode(encoded);
             Get.toNamed(RouteHelper.getVerificationRoute(numberWithCountryCode, status.message, RouteHelper.signUp, data));
           }else {
-            Get.find<LocationController>().navigateToLocationScreen(RouteHelper.signUp);
+            // Get.find<LocationController>().navigateToLocationScreen(RouteHelper.signUp)
+            // ;
+
+               Get.find<AuthController>().forgetPassword(numberWithCountryCode).then((value) {
+        if (value.isSuccess) {
+          showCustomSnackBar('otp send successfully'.tr, isError: false);
+           Get.toNamed(RouteHelper.getVerificationRoute(
+          numberWithCountryCode, '', RouteHelper.signIn, ''));
+        } else if (value.message == 'Phone number not found!') {
+          // showCustomSnackBar('Unauthenticated'.tr, isError: false);
+          // Get.back();
+          // Get.toNamed(RouteHelper.getSignUpRoute());
+
+           
+        }
+        else {
+          showCustomSnackBar(value.message);
+          
+            print(value.message);
+        }
+      }
+            );
           }
         }else {
           showCustomSnackBar(status.message);

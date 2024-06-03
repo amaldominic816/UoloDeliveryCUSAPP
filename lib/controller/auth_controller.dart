@@ -275,8 +275,13 @@ class AuthController extends GetxController implements GetxService {
     update();
     Response response = await authRepo.registerWithSocialMedia(socialLogInBody);
     if (response.statusCode == 200) {
+      showCustomSnackBar( response.body['message'], isError: false);
+      print(response.body);
       String? token = response.body['token'];
       if(Get.find<SplashController>().configModel!.customerVerification! && response.body['is_phone_verified'] == 0) {
+
+
+        
         Get.toNamed(RouteHelper.getVerificationRoute(socialLogInBody.phone, token, RouteHelper.signUp, ''));
       }else {
         authRepo.saveUserToken(response.body['token']);
@@ -728,4 +733,22 @@ class AuthController extends GetxController implements GetxService {
   }
 
   void saveUserNumber(String number, String countryDialCode) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

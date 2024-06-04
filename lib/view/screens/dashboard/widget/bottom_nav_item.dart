@@ -27,14 +27,18 @@ class BottomNavItem extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                isSelected
-                    ? Text(
+                 Text(
                   title,
                   style: robotoRegular.copyWith(
-                      color: isSelected ? const Color(0xff000000) : Theme.of(context).disabledColor.withOpacity(0.8),
+                      color: 
+                      isSelected ? const Color(0xff000000) :
+                      //  Theme.of(context).disabledColor.withOpacity(0.8)
+                      // Theme.of(context).primaryColor
+                      const Color(0xff484545)
+                       ,
                       fontSize: 12),
                 )
-                    : const SizedBox(),
+                    // : Text(title)
               ],
             ),
           ],

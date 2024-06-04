@@ -339,7 +339,7 @@ class RouteHelper {
       exitFromApp: Get.parameters['page'] == signUp || Get.parameters['page'] == splash || Get.parameters['page'] == onBoarding,
       backFromThis: Get.parameters['page'] != splash && Get.parameters['page'] != onBoarding,
     )),
-    GetPage(name: signUp, page: () => const SignUpScreen()),
+    GetPage(name: signUp, page: () => const SignUpScreen(number: '',)),
     GetPage(name: verification, page: () {
       List<int> decode = base64Decode(Get.parameters['pass']!.replaceAll(' ', '+'));
       String data = utf8.decode(decode);

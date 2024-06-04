@@ -6,6 +6,7 @@ import 'dart:core';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
+import 'package:marquee/marquee.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:sixam_mart/controller/auth_controller.dart';
 import 'package:sixam_mart/controller/banner_controller.dart';
@@ -148,170 +149,404 @@ class _ModuleViewState extends State<ModuleView>  {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
           
-                         Container(
-                              // autogroup84qxaFs (LRnS7e9TYh15iZHzgA84qX)
-                              margin: EdgeInsets.fromLTRB(1*fem, 0*fem, 19*fem, 35*fem),
-                              width: double.infinity,
-                              height: 40*fem,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    // autogroupwxr7gJu (LRnSJ41n23uQtATH5AwxR7)
-                                    margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 55*fem, 0*fem),
-                                    height: double.infinity,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        InkWell(
-                                         onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        //  Container(
+                        //       // autogroup84qxaFs (LRnS7e9TYh15iZHzgA84qX)
+                        //       margin: EdgeInsets.fromLTRB(1*fem, 0*fem, 19*fem, 35*fem),
+                        //       width: double.infinity,
+                        //       height: 40*fem,
+                        //       child: Row(
+                        //         crossAxisAlignment: CrossAxisAlignment.center,
+                        //         children: [
+                        //           Container(
+                        //             // autogroupwxr7gJu (LRnSJ41n23uQtATH5AwxR7)
+                        //             margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 55*fem, 0*fem),
+                        //             height: double.infinity,
+                        //             child: Column(
+                        //               crossAxisAlignment: CrossAxisAlignment.start,
+                        //               children: [
+                        //                 InkWell(
+                        //                  onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
                                          
-                                          child: Text(
-                                            // deliverytoSBb (1:34)
-                                            'Delivery to',
-                                            style: SafeGoogleFont (
-                                              'Poppins',
-                                              fontSize: 12*ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.5*ffem/fem,
-                                              color: Color(0xff23241f),
-                                            ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
-                                          child: GetBuilder<LocationController>(
-                                            builder: (locationController) {
-                                              String userAddress = locationController.getUserAddress()?.address ?? '';
-                                                  
-                                              if (userAddress.length > 35) {
-                                                return InkWell(
-                                                  onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
-                                                  child: Container(
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
-                                                          child: Text(
-                                                            userAddress.substring(0, 35),
-                                                            style: SafeGoogleFont(
-                                                              'Poppins',
-                                                              fontSize: 12 * ffem,
-                                                              fontWeight: FontWeight.w400,
-                                                              height: 1 * ffem / fem,
-                                                              color: Color(0xff23241f),
-                                                            ),
-                                                          ),
-                                                        ),
+                        //                   child: Text(
+                        //                     // deliverytoSBb (1:34)
+                        //                     'Delivery to',
+                        //                     style: SafeGoogleFont (
+                        //                       'Poppins',
+                        //                       fontSize: 12*ffem,
+                        //                       fontWeight: FontWeight.w400,
+                        //                       height: 1.5*ffem/fem,
+                        //                       color: Color(0xff23241f),
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //                 Container(
+                        //                   width: 200,
+                                          
+                        //                   child: InkWell(
+                        //                     onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        //                     child: GetBuilder<LocationController>(
+                        //                       builder: (locationController) {
+                        //                         String userAddress = locationController.getUserAddress()?.address ?? '';
                                                     
-                                                        InkWell(
-                                                          onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
-                                                          child: Text(
-                                                            userAddress.substring(35),
-                                                            style: SafeGoogleFont(
-                                                              'Poppins',
-                                                              fontSize: 12 * ffem,
-                                                              fontWeight: FontWeight.w400,
-                                                              height: 1.5 * ffem / fem,
-                                                              color: Color(0xff23241f),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              } else {
-                                                return Text(
-                                                  userAddress,
-                                                  style: SafeGoogleFont(
-                                                    'Poppins',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w400,
-                                                    height: 1.5 * ffem / fem,
-                                                    color: Color(0xff23241f),
-                                                  ),
-                                                );
-                                              }
-                                                  
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-          
-                                   Center(
+                        //                         if (userAddress.length > 35) {
+                        //                           return InkWell(
+                        //                             onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        //                             child: Container(
+                        //                               child: Column(
+                        //                                 crossAxisAlignment: CrossAxisAlignment.start,
+                        //                                 children: [
+                        //                                   InkWell(
+                        //                                     onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        //                                     child: SingleChildScrollView(
+
+                        //                                                 scrollDirection: Axis.horizontal, 
+                        //                                       child: Text(
+                        //                                         userAddress.substring(0, 35),
+                        //                                         style: SafeGoogleFont(
+                        //                                           'Poppins',
+                        //                                           fontSize: 12 * ffem,
+                        //                                           fontWeight: FontWeight.w400,
+                        //                                           height: 1 * ffem / fem,
+                        //                                           color: Color(0xff23241f),
+                        //                                         ),
+                        //                                          overflow: TextOverflow.ellipsis,
+                        //                                       ),
+                                                              
+                        //                                     ),
+                        //                                   ),
+                                                      
+                        //                                   InkWell(
+                        //                                     onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        //                                     child: SingleChildScrollView(
+                        //                                       scrollDirection: Axis.horizontal,
+                        //                                       child: Text(
+                        //                                         userAddress.substring(35),
+                        //                                         style: SafeGoogleFont(
+                        //                                           'Poppins',
+                        //                                           fontSize: 12 * ffem,
+                        //                                           fontWeight: FontWeight.w400,
+                        //                                           height: 1.5 * ffem / fem,
+                        //                                           color: Color(0xff23241f),
+                        //                                         ),
+                        //                                         overflow: TextOverflow.ellipsis,
+                        //                                       ),
+                        //                                     ),
+                        //                                   ),
+                        //                                 ],
+                        //                               ),
+                        //                             ),
+                        //                           );
+                        //                         } else {
+                        //                           return SingleChildScrollView(
+                        //                             scrollDirection: Axis.horizontal,
+                        //                             child: Text(
+                                                      
+                        //                               userAddress,
+                        //                               style: SafeGoogleFont(
+                        //                                 'Poppins',
+                        //                                 fontSize: 12 * ffem,
+                        //                                 fontWeight: FontWeight.w400,
+                        //                                 height: 1.5 * ffem / fem,
+                        //                                 color: Color(0xff23241f),
+                        //                               ),
+                        //                               overflow: TextOverflow.ellipsis,
+                        //                             ),
+                        //                           );
+                        //                         }
+                                                    
+                        //                       },
+                        //                     ),
+                        //                   ),
+                        //                 )
+                        //               ],
+                        //             ),
+                        //           ),
+                        //             //  SizedBox(width: 15,),
+                        //            Center(
                                    
                                     
-                                     child: Container(
-                                       // 6G9 (14567349)
+                        //              child: Container(
+                        //                // 6G9 (14567349)
                                        
-                                       margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 0 * fem, 13 * fem),
-                                       width: 50 * fem,
-                                       height: 60 * fem,
-                                       child: Container(
-                                         // autogroupkgc1dWy (LRnSQt9jHgMPY1y2mnkgc1)
-                                         padding: EdgeInsets.fromLTRB(1 * fem, 4 * fem, 4 * fem, 1 * fem),
-                                         width: 50 * fem,
-                                         height: 60 * fem,
-                                         constraints: const BoxConstraints(
-                                           minWidth: double.infinity,
-                                           minHeight: double.infinity,
-                                         ),
-                                         decoration: BoxDecoration(
-                                           color: Color(0xffffffff),
-                                           borderRadius: BorderRadius.circular(5 * fem),
-                                         ),
-                                         child: GridView.count(
-                                           crossAxisCount: 2,
-                                           childAspectRatio: 2,
-                                           children: [
-                                             GestureDetector(
-                                               onTap: () {
-                                                 Get.toNamed(RouteHelper.getWalletRoute(false));
-                                               },
-                                               child: Container(
-                                                 width: 50 * fem,
-                                                 height: 20 * fem,
-                                                 child: Image.asset(
-                                                   'assets/image/vector.png',
-                                                   width: 50 * fem,
-                                                   height: 20 * fem,
-                                                 ),
-                                               ),
-                                             ),
-                                             GetBuilder<UserController>(builder: (userController) {
-                                               final bool isLoggedIn = Get.find<AuthController>().isLoggedIn();
+                        //                margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 0 * fem, 13 * fem),
+                        //                width: 50 * fem,
+                        //                height: 60 * fem,
+                        //                child: Container(
+                        //                  // autogroupkgc1dWy (LRnSQt9jHgMPY1y2mnkgc1)
+                        //                  padding: EdgeInsets.fromLTRB(1 * fem, 4 * fem, 4 * fem, 1 * fem),
+                        //                  width: 50 * fem,
+                        //                  height: 60 * fem,
+                        //                  constraints: const BoxConstraints(
+                        //                    minWidth: double.infinity,
+                        //                    minHeight: double.infinity,
+                        //                  ),
+                        //                  decoration: BoxDecoration(
+                        //                    color: Color(0xffffffff),
+                        //                    borderRadius: BorderRadius.circular(5 * fem),
+                        //                  ),
+                        //                  child: GridView.count(
+                        //                    crossAxisCount: 2,
+                        //                    childAspectRatio: 2,
+                        //                    children: [
+                        //                      GestureDetector(
+                        //                        onTap: () {
+                        //                          Get.toNamed(RouteHelper.getWalletRoute(false));
+                        //                        },
+                        //                        child: Container(
+                        //                          width: 50 * fem,
+                        //                          height: 20 * fem,
+                        //                          child: Image.asset(
+                        //                            'assets/image/vector.png',
+                        //                            width: 50 * fem,
+                        //                            height: 20 * fem,
+                        //                          ),
+                        //                        ),
+                        //                      ),
+                        //                      GetBuilder<UserController>(builder: (userController) {
+                        //                        final bool isLoggedIn = Get.find<AuthController>().isLoggedIn();
                                                                     
-                                               return Container(
-                                                 // autogroupr2a58s3 (LRnSWo9YSG2rfL5hKRR2A5)
-                                                 width: 40 * fem,
-                                                 height: 40 * fem,
-                                                 child: Center(
-                                                   child: Text(
-                                                     '${isLoggedIn ? userController.userInfoModel?.loyaltyPoint ?? 0 : ''} ${''.tr}',
-                                                     style: SafeGoogleFont(
-                                                       'Poppins',
-                                                       fontSize: 10 * ffem,
-                                                       fontWeight: FontWeight.w700,
-                                                       color: Color(0xFF1B032B),
-                                                     ),
-                                                   ),
-                                                 ),
-                                               );
-                                             }),
-                                           ],
-                                         ),
-                                       ),
-                                     ),
-                                   )
+                        //                        return Container(
+                        //                          // autogroupr2a58s3 (LRnSWo9YSG2rfL5hKRR2A5)
+                        //                          width: 40 * fem,
+                        //                          height: 40 * fem,
+                        //                          child: Center(
+                        //                            child: Text(
+                        //                              '${isLoggedIn ? userController.userInfoModel?.loyaltyPoint ?? 0 : ''} ${''.tr}',
+                        //                              style: SafeGoogleFont(
+                        //                                'Poppins',
+                        //                                fontSize: 10 * ffem,
+                        //                                fontWeight: FontWeight.w700,
+                        //                                color: Color(0xFF1B032B),
+                        //                              ),
+                        //                            ),
+                        //                          ),
+                        //                        );
+                        //                      }),
+                        //                    ],
+                        //                  ),
+                        //                ),
+                        //              ),
+                        //            )
           
           
-                                ],
+                        //         ],
+                        //       ),
+                        //     ),
+                            Container(
+                              
+  // autogroup84qxaFs (LRnS7e9TYh15iZHzgA84qX)
+  margin: EdgeInsets.fromLTRB(1*fem, 0*fem, 19*fem, 35*fem),
+  width: double.infinity,
+  height: 40*fem,
+  child: Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Container(
+        // autogroupwxr7gJu (LRnSJ41n23uQtATH5AwxR7)
+        margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 55*fem, 0*fem),
+        height: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+              child: Text(
+                // deliverytoSBb (1:34)
+                'Delivery to',
+                style: SafeGoogleFont (
+                  'Poppins',
+                  fontSize: 12*ffem,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5*ffem/fem,
+                  color: Color(0xff23241f),
+                ),
+              ),
+            ),
+            Container(
+              width: 150,
+              child: InkWell(
+                onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                child: GetBuilder<LocationController>(
+                  builder: (locationController) {
+                    String userAddress = locationController.getUserAddress()?.address ?? '';
+                    
+                    if (userAddress.length > 35) {
+                      return InkWell(
+                        onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Text(
+                                    userAddress.substring(0, 35),
+                                    style: SafeGoogleFont(
+                                      'Poppins',
+                                      fontSize: 12 * ffem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1 * ffem / fem,
+                                      color: Color(0xff23241f),
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
                               ),
-                            ),
+                              InkWell(
+                                onTap: () => Get.find<LocationController>().navigateToLocationScreen('home'),
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Text(
+                                    userAddress.substring(35),
+                                    style: SafeGoogleFont(
+                                      'Poppins',
+                                      fontSize: 12 * ffem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.5 * ffem / fem,
+                                      color: Color(0xff23241f),
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    } else {
+                      return 
+//                       Container(
+//   width: 200, // set a fixed width
+//   // height: 30, // set a fixed height
+//   // color: Colors.white, // set a white background
+//   child: Marquee(
+//     text: 'This is a sample address that will scroll',
+//     style: TextStyle(fontSize: 16, color: Colors.black), // set a black text color
+//     scrollAxis: Axis.horizontal,
+//     blankSpace: 20,
+//     velocity: 50,
+//   ),
+// );
+                      Container(
+                        width: 100,
+                        height: 20,
+                        child: Marquee(
+                          // decelerationCurve: Curves.easeInCubic, 
+                          pauseAfterRound: Durations.long4,
+                          // fadingEdgeEndFraction: .2  ,
+                          // fadingEdgeStartFraction: .10,
+                          
+                          text: userAddress,
+                          style: SafeGoogleFont(
+                            'Poppins',
+                            fontSize: 12 * ffem,
+                            fontWeight: FontWeight.w400,
+                            height: 1.5 * ffem / fem,
+                            color: Color(0xff23241f),
+                          ),
+                          scrollAxis: Axis.horizontal,
+                          blankSpace: 20,
+                           // add some blank space at the end
+                          velocity: 30, // adjust the scrolling speed
+                        ),
+                      );
+                      // SingleChildScrollView(
+                      //   scrollDirection: Axis.horizontal,
+                      //   child: Text(
+                      //     // "fhuhghghghgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+                      //     userAddress,
+                      //     style: SafeGoogleFont(
+                      //       'Poppins',
+                      //       fontSize: 12 * ffem,
+                      //       fontWeight: FontWeight.w400,
+                      //       height: 1.5 * ffem / fem,
+                      //       color: Color(0xff23241f),
+                      //     ),
+                      //     overflow: TextOverflow.ellipsis,
+                      //     //  overflow: TextOverflow.fade,
+                      //   ),
+                      // );
+                    }
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            // 6G9 (14567349)
+
+            margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 0 * fem, 13 * fem),
+            width: 50 * fem,
+            height: 60 * fem,
+            child: Container(
+              // autogroupkgc1dWy (LRnSQt9jHgMPY1y2mnkgc1)
+              padding: EdgeInsets.fromLTRB(1 * fem, 4 * fem, 4 * fem, 1 * fem),
+              width: 50 * fem,
+              height: 60 * fem,
+              constraints: const BoxConstraints(
+                minWidth: double.infinity,
+                minHeight: double.infinity,
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.circular(5 * fem),
+              ),
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 2,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getWalletRoute(false));
+                    },
+                    child: Container(
+                      width: 50 * fem,
+                      height: 20 * fem,
+                      child: Image.asset(
+                        'assets/image/vector.png',
+                        width: 50 * fem,
+                        height: 20 * fem,
+                      ),
+                    ),
+                  ),
+                  GetBuilder<UserController>(builder: (userController) {
+                    final bool isLoggedIn = Get.find<AuthController>().isLoggedIn();
+
+                    return Container(
+                      // autogroupr2a58s3 (LRnSWo9YSG2rfL5hKRR2A5)
+                      width: 40 * fem,
+                      height: 40 * fem,
+                      child: Center(
+                        child: Text(
+                          '${isLoggedIn ? userController.userInfoModel?.loyaltyPoint ?? 0 : ''} ${''.tr}',
+                          style: SafeGoogleFont(
+                            'Poppins',
+                            fontSize: 10 * ffem,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF1B032B),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+                            
                              Container(
                               // autogroup23ayDNh (LRnSoHg4d7r295FJ7A23ay)
                               width: double.infinity,

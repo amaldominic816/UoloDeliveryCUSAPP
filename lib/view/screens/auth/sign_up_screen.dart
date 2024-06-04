@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:sixam_mart/controller/auth_controller.dart';
@@ -83,236 +84,256 @@ class SignUpScreenState extends State<SignUpScreen> {
               // ) : const SizedBox(),
 
               return SingleChildScrollView(
-                child: Stack(
+                child: Column(
                   children: [
-
-                    ResponsiveHelper.isDesktop(context) ? Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                          onPressed: () => Get.back(),
-                          icon: const Icon(Icons.clear),
-                        ),
-                      ),
-                    ) : const SizedBox(),
-
-
-                    Padding(
-                      padding: ResponsiveHelper.isDesktop(context) ? const EdgeInsets.all(40) : EdgeInsets.zero,
-                      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-
-                        Image.asset(Images.logo, width: 125),
-                        // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                        // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
-                        const SizedBox(height: Dimensions.paddingSizeExtraLarge),
-
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text('sign_up'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
-                        ),
-                        const SizedBox(height: Dimensions.paddingSizeDefault),
-
-                        Row(children: [
-                          Expanded(
-                            child: CustomTextField(
-                              titleText: 'first_name'.tr,
-                              hintText: 'ex_jhon'.tr,
-                              controller: _firstNameController,
-                              focusNode: _firstNameFocus,
-                              nextFocus: _lastNameFocus,
-                              inputType: TextInputType.name,
-                              capitalization: TextCapitalization.words,
-                              prefixIcon: Icons.person,
-                              showTitle: ResponsiveHelper.isDesktop(context),
-                            ),
-                          ),
-                          const SizedBox(width: Dimensions.paddingSizeSmall),
-
-                          Expanded(
-                            child: CustomTextField(
-                              titleText: 'last_name'.tr,
-                              hintText: 'ex_doe'.tr,
-                              controller: _lastNameController,
-                              focusNode: _lastNameFocus,
-                              nextFocus: ResponsiveHelper.isDesktop(context) ? _emailFocus : _phoneFocus,
-                              inputType: TextInputType.name,
-                              capitalization: TextCapitalization.words,
-                              prefixIcon: Icons.person,
-                              showTitle: ResponsiveHelper.isDesktop(context),
-                            ),
-                          )
-                        ]),
-                        const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                        Row(children: [
-                          ResponsiveHelper.isDesktop(context) ? Expanded(
-                            child: CustomTextField(
-                              titleText: 'email'.tr,
-                              hintText: 'enter_email'.tr,
-                              controller: _emailController,
-                              focusNode: _emailFocus,
-                              nextFocus: ResponsiveHelper.isDesktop(context) ? _phoneFocus : _passwordFocus,
-                              inputType: TextInputType.emailAddress,
-                              prefixImage: Images.mail,
-                              showTitle: ResponsiveHelper.isDesktop(context),
+                      
+                      Image.asset(Images.logo ,color: Color.fromARGB(255, 2, 22, 39), width: 125),
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                          // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
+                          const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      // color: Colors.purpleAccent,
+                      decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(Images.mob_bg),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                      child: Stack(
+                        children: [
+                      
+                          ResponsiveHelper.isDesktop(context) ? Positioned(
+                            top: 0,
+                            right: 0,
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: IconButton(
+                                onPressed: () => Get.back(),
+                                icon: const Icon(Icons.clear),
+                              ),
                             ),
                           ) : const SizedBox(),
-                          SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
-
-                          // Expanded(
-                          //   child: CustomTextField(
-                          //     titleText: ResponsiveHelper.isDesktop(context) ? 'phone'.tr : 'enter_phone_number'.tr,
-                          //     controller: _phoneController,
-                          //     focusNode: _phoneFocus,
-                          //     nextFocus: ResponsiveHelper.isDesktop(context) ? _passwordFocus : _emailFocus,
-                          //     inputType: TextInputType.phone,
-                          //     isPhone: true,
-                          //     showTitle: ResponsiveHelper.isDesktop(context),
-                          //     onCountryChanged: (CountryCode countryCode) {
-                          //       _countryDialCode = countryCode.dialCode;
-                          //     },
-                          //     countryDialCode: _countryDialCode != null ? CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).code
-                          //         : Get.find<LocalizationController>().locale.countryCode,
-                          //   ),
-                          // ),
-
-                        ]),
-                        const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                        !ResponsiveHelper.isDesktop(context) ? CustomTextField(
-                          titleText: 'email'.tr,
-                          hintText: 'enter_email'.tr,
-                          controller: _emailController,
-                          focusNode: _emailFocus,
-                          nextFocus: _passwordFocus,
-                          inputType: TextInputType.emailAddress,
-                          prefixIcon: Icons.mail,
-                        ) : const SizedBox(),
-                        SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
-
-                        Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          // Expanded(
-                          //   child: Column(children: [
-                          //     CustomTextField(
-                          //       titleText: 'password'.tr,
-                          //       hintText: '8_character'.tr,
-                          //       controller: _passwordController,
-                          //       focusNode: _passwordFocus,
-                          //       nextFocus: _confirmPasswordFocus,
-                          //       inputType: TextInputType.visiblePassword,
-                          //       prefixIcon: Icons.lock,
-                          //       isPassword: true,
-                          //       showTitle: ResponsiveHelper.isDesktop(context),
-                          //       // onChanged: (value){
-                          //       //   if(value != null && value.isNotEmpty){
-                          //       //     if(!authController.showPassView){
-                          //       //       authController.showHidePass();
-                          //       //     }
-                          //       //     authController.validPassCheck(value);
-                          //       //   }else{
-                          //       //     if(authController.showPassView){
-                          //       //       authController.showHidePass();
-                          //       //     }
-                          //       //   }
-                          //       // },
-                          //     ),
-
-                          //     // authController.showPassView ? const PassView() : const SizedBox(),
-                          //   ]),
-                          // ),
-                          SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
-
-                          // ResponsiveHelper.isDesktop(context) ? Expanded(child: CustomTextField(
-                          //   titleText: 'confirm_password'.tr,
-                          //   hintText: '8_character'.tr,
-                          //   controller: _confirmPasswordController,
-                          //   focusNode: _confirmPasswordFocus,
-                          //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
-                          //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
-                          //   inputType: TextInputType.visiblePassword,
-                          //   prefixIcon: Icons.lock,
-                          //   isPassword: true,
-                          //   showTitle: ResponsiveHelper.isDesktop(context),
-                          //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
-                          // )) : const SizedBox()
-
-                        ]),
-                        const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                        !ResponsiveHelper.isDesktop(context) ?
-                        //  CustomTextField(
-                        //   titleText: 'confirm_password'.tr,
-                        //   hintText: '8_character'.tr,
-                        //   controller: _confirmPasswordController,
-                        //   focusNode: _confirmPasswordFocus,
-                        //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
-                        //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
-                        //   inputType: TextInputType.visiblePassword,
-                        //   prefixIcon: Icons.lock,
-                        //   isPassword: true,
-                        //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
-                        // ) 
-                        // : const SizedBox(),
-                        // SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
-
-                        (Get.find<SplashController>().configModel!.refEarningStatus == 1 ) ? CustomTextField(
-                          titleText: 'refer_code'.tr,
-                          hintText: 'enter_refer_code'.tr,
-                          controller: _referCodeController,
-                          focusNode: _referCodeFocus,
-                          inputAction: TextInputAction.done,
-                          inputType: TextInputType.text,
-                          capitalization: TextCapitalization.words,
-                          prefixImage: Images.referCode,
-                          prefixSize: 14,
-                          showTitle: ResponsiveHelper.isDesktop(context),
-                        ) : const SizedBox() :
-                        const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                        ConditionCheckBox(authController: authController, fromSignUp: true),
-                        const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                        CustomButton(
-                          height: ResponsiveHelper.isDesktop(context) ? 45 : null,
-                          width:  ResponsiveHelper.isDesktop(context) ? 180 : null,
-                          radius: ResponsiveHelper.isDesktop(context) ? Dimensions.radiusSmall : Dimensions.radiusDefault,
-                          isBold: !ResponsiveHelper.isDesktop(context),
-                          fontSize: ResponsiveHelper.isDesktop(context) ? Dimensions.fontSizeExtraSmall : null,
-                          buttonText: 'sign_up'.tr,
-                          isLoading: authController.isLoading,
-                          onPressed: authController.acceptTerms ? () => _register(authController, _countryDialCode!) : null,
-                        ),
-
-                        const SizedBox(height: Dimensions.paddingSizeExtraLarge),
-
-                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                          Text('already_have_account'.tr, style: robotoRegular.copyWith(color: Theme.of(context).hintColor)),
-
-                          InkWell(
-                            onTap: () {
-                              if(ResponsiveHelper.isDesktop(context)){
-                                Get.back();
-                                Get.dialog(const SignInScreen(exitFromApp: false, backFromThis: false));
-                              }else{
-                                if(Get.currentRoute == RouteHelper.signUp) {
-                                  Get.back();
-                                } else {
-                                  Get.toNamed(RouteHelper.getSignInRoute(RouteHelper.signUp));
-                                }
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-                              child: Text('sign_in'.tr, style: robotoMedium.copyWith(color: Theme.of(context).primaryColor)),
-                            ),
+                      
+                             
+                          Padding(
+                            padding: ResponsiveHelper.isDesktop(context) ? const EdgeInsets.all(40) : EdgeInsets.zero,
+                            child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      
+                              
+                      
+                              // Align(
+                              //   alignment: Alignment.topLeft,
+                              //   child: Text('sign_up'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
+                              // ),
+                              const SizedBox(height: Dimensions.paddingSizeDefault),
+                      
+                              Row(children: [
+                                Expanded(
+                                  child: CustomTextField(
+                                    titleText: 'first_name'.tr,
+                                    hintText: 'ex_jhon'.tr,
+                                    controller: _firstNameController,
+                                    focusNode: _firstNameFocus,
+                                    nextFocus: _lastNameFocus,
+                                    inputType: TextInputType.name,
+                                    capitalization: TextCapitalization.words,
+                                    prefixIcon: Icons.person,
+                                    showTitle: ResponsiveHelper.isDesktop(context),
+                                  ),
+                                ),
+                                const SizedBox(width: Dimensions.paddingSizeSmall),
+                              
+                                Expanded(
+                                  child: CustomTextField(
+                    
+                                    titleText: 'last_name'.tr,
+                                    hintText: 'ex_doe'.tr,
+                                    controller: _lastNameController,
+                                    focusNode: _lastNameFocus,
+                                    nextFocus: ResponsiveHelper.isDesktop(context) ? _emailFocus : _phoneFocus,
+                                    inputType: TextInputType.name,
+                                    capitalization: TextCapitalization.words,
+                                    prefixIcon: Icons.person,
+                                    showTitle: ResponsiveHelper.isDesktop(context),
+                                  ),
+                                )
+                              ]),
+                              // const SizedBox(height: Dimensions.paddingSizeLarge),
+                      
+                              Row(children: [
+                                ResponsiveHelper.isDesktop(context) ? Expanded(
+                                  child: CustomTextField(
+                                    titleText: 'email'.tr,
+                                    hintText: 'enter_email'.tr,
+                                    controller: _emailController,
+                                    focusNode: _emailFocus,
+                                    nextFocus: ResponsiveHelper.isDesktop(context) ? _phoneFocus : _passwordFocus,
+                                    inputType: TextInputType.emailAddress,
+                                    prefixImage: Images.mail,
+                                    showTitle: ResponsiveHelper.isDesktop(context),
+                                  ),
+                                ) : const SizedBox(),
+                                SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
+                      
+                                // Expanded(
+                                //   child: CustomTextField(
+                                //     titleText: ResponsiveHelper.isDesktop(context) ? 'phone'.tr : 'enter_phone_number'.tr,
+                                //     controller: _phoneController,
+                                //     focusNode: _phoneFocus,
+                                //     nextFocus: ResponsiveHelper.isDesktop(context) ? _passwordFocus : _emailFocus,
+                                //     inputType: TextInputType.phone,
+                                //     isPhone: true,
+                                //     showTitle: ResponsiveHelper.isDesktop(context),
+                                //     onCountryChanged: (CountryCode countryCode) {
+                                //       _countryDialCode = countryCode.dialCode;
+                                //     },
+                                //     countryDialCode: _countryDialCode != null ? CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).code
+                                //         : Get.find<LocalizationController>().locale.countryCode,
+                                //   ),
+                                // ),
+                      
+                              ]),
+                              const SizedBox(height: Dimensions.paddingSizeLarge),
+                      
+                              !ResponsiveHelper.isDesktop(context) ? CustomTextField(
+                                titleText: 'email'.tr,
+                                hintText: 'enter_email'.tr,
+                                controller: _emailController,
+                                focusNode: _emailFocus,
+                                nextFocus: _passwordFocus,
+                                inputType: TextInputType.emailAddress,
+                                prefixIcon: Icons.mail,
+                              ) : const SizedBox(),
+                              // SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
+                      
+                              Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                // Expanded(
+                                //   child: Column(children: [
+                                //     CustomTextField(
+                                //       titleText: 'password'.tr,
+                                //       hintText: '8_character'.tr,
+                                //       controller: _passwordController,
+                                //       focusNode: _passwordFocus,
+                                //       nextFocus: _confirmPasswordFocus,
+                                //       inputType: TextInputType.visiblePassword,
+                                //       prefixIcon: Icons.lock,
+                                //       isPassword: true,
+                                //       showTitle: ResponsiveHelper.isDesktop(context),
+                                //       // onChanged: (value){
+                                //       //   if(value != null && value.isNotEmpty){
+                                //       //     if(!authController.showPassView){
+                                //       //       authController.showHidePass();
+                                //       //     }
+                                //       //     authController.validPassCheck(value);
+                                //       //   }else{
+                                //       //     if(authController.showPassView){
+                                //       //       authController.showHidePass();
+                                //       //     }
+                                //       //   }
+                                //       // },
+                                //     ),
+                      
+                                //     // authController.showPassView ? const PassView() : const SizedBox(),
+                                //   ]),
+                                // ),
+                                SizedBox(width: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : 0),
+                      
+                                // ResponsiveHelper.isDesktop(context) ? Expanded(child: CustomTextField(
+                                //   titleText: 'confirm_password'.tr,
+                                //   hintText: '8_character'.tr,
+                                //   controller: _confirmPasswordController,
+                                //   focusNode: _confirmPasswordFocus,
+                                //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
+                                //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
+                                //   inputType: TextInputType.visiblePassword,
+                                //   prefixIcon: Icons.lock,
+                                //   isPassword: true,
+                                //   showTitle: ResponsiveHelper.isDesktop(context),
+                                //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
+                                // )) : const SizedBox()
+                      
+                              ]),
+                              const SizedBox(height: Dimensions.paddingSizeLarge),
+                      
+                              !ResponsiveHelper.isDesktop(context) ?
+                              //  CustomTextField(
+                              //   titleText: 'confirm_password'.tr,
+                              //   hintText: '8_character'.tr,
+                              //   controller: _confirmPasswordController,
+                              //   focusNode: _confirmPasswordFocus,
+                              //   nextFocus: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? _referCodeFocus : null,
+                              //   inputAction: Get.find<SplashController>().configModel!.refEarningStatus == 1 ? TextInputAction.next : TextInputAction.done,
+                              //   inputType: TextInputType.visiblePassword,
+                              //   prefixIcon: Icons.lock,
+                              //   isPassword: true,
+                              //   onSubmit: (text) => (GetPlatform.isWeb) ? _register(authController, _countryDialCode!) : null,
+                              // ) 
+                              // : const SizedBox(),
+                              // SizedBox(height: !ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),
+                      
+                              (Get.find<SplashController>().configModel!.refEarningStatus == 1 ) ? CustomTextField(
+                                titleText: 'refer_code'.tr,
+                                hintText: 'enter_refer_code'.tr,
+                                controller: _referCodeController,
+                                focusNode: _referCodeFocus,
+                                inputAction: TextInputAction.done,
+                                inputType: TextInputType.text,
+                                capitalization: TextCapitalization.words,
+                                prefixImage: Images.referCode,
+                                prefixSize: 14,
+                                showTitle: ResponsiveHelper.isDesktop(context),
+                              ) : const SizedBox() :
+                              const SizedBox(height: Dimensions.paddingSizeLarge),
+                      
+                              ConditionCheckBox(authController: authController, fromSignUp: true),
+                              const SizedBox(height: Dimensions.paddingSizeLarge),
+                      
+                              CustomButton(
+                                height: ResponsiveHelper.isDesktop(context) ? 45 : null,
+                                width:  ResponsiveHelper.isDesktop(context) ? 180 : null,
+                                radius: ResponsiveHelper.isDesktop(context) ? Dimensions.radiusSmall : Dimensions.radiusDefault,
+                                isBold: !ResponsiveHelper.isDesktop(context),
+                                fontSize: ResponsiveHelper.isDesktop(context) ? Dimensions.fontSizeExtraSmall : null,
+                                buttonText: 'sign_up'.tr,
+                                isLoading: authController.isLoading,
+                                onPressed: authController.acceptTerms ? () => _register(authController, _countryDialCode!) : null,
+                              ),
+                      
+                              const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+                      
+                              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                Text('already_have_account'.tr, style: robotoRegular.copyWith(
+                                  color: 
+                                  Theme.of(context).hintColor
+                                  )),
+                      
+                                InkWell(
+                                  onTap: () {
+                                    if(ResponsiveHelper.isDesktop(context)){
+                                      Get.back();
+                                      Get.dialog(const SignInScreen(exitFromApp: false, backFromThis: false));
+                                    }else{
+                                      if(Get.currentRoute == RouteHelper.signUp) {
+                                        Get.back();
+                                      } else {
+                                        Get.toNamed(RouteHelper.getSignInRoute(RouteHelper.signUp));
+                                      }
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+                                    child: Text('sign_in'.tr, style: robotoMedium.copyWith(color: Theme.of(context).primaryColor)),
+                                  ),
+                                ),
+                              ]),
+                      
+                            ]),
                           ),
-                        ]),
-
-                      ]),
+                      
+                        ],
+                      ),
                     ),
-
                   ],
                 ),
               );
@@ -330,8 +351,10 @@ class SignUpScreenState extends State<SignUpScreen> {
     String email = _emailController.text.trim();
     // String number = _phoneController.text.trim();
     String number = widget.number;
-    String password = _passwordController.text.trim();
-    String confirmPassword = _confirmPasswordController.text.trim();
+
+    String randompassword = _generateRandomPassword(8);              
+    String password = randompassword;
+    String confirmPassword = randompassword;
     String referCode = _referCodeController.text.trim();
 
     String numberWithCountryCode = number;
@@ -340,9 +363,11 @@ class SignUpScreenState extends State<SignUpScreen> {
 
     if (firstName.isEmpty) {
       showCustomSnackBar('enter_your_first_name'.tr);
-    }else if (lastName.isEmpty) {
+    }
+    else if (lastName.isEmpty) {
       showCustomSnackBar('enter_your_last_name'.tr);
-    }else if (email.isEmpty) {
+    }
+    else if (email.isEmpty) {
       showCustomSnackBar('enter_email_address'.tr);
     }else if (!GetUtils.isEmail(email)) {
       showCustomSnackBar('enter_a_valid_email_address'.tr);
@@ -396,5 +421,14 @@ class SignUpScreenState extends State<SignUpScreen> {
         }
       });
     }
+  }
+
+  String _generateRandomPassword(int length) {
+    const String characters =
+        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#\$%^&*()_+-=[]{}|;:,.<>?';
+    final Random random = Random();
+
+    return String.fromCharCodes(Iterable.generate(
+        length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
   }
 }

@@ -7,7 +7,8 @@ class BNBCustomPainter extends CustomPainter {
     Paint paint = Paint();
     Path path = Path();
 
-    paint.color = const Color(0xffe7e3e3);
+    // paint.color = const Color(0xffe7e3e3);
+   paint.color = const Color(0xFFFFFFFF);
 
     // Define the new height from the top
     double newHeightFromTop = size.height / 3;

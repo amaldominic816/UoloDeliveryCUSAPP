@@ -164,9 +164,10 @@ class DashboardScreenState extends State<DashboardScreen> {
                           const MenuScreenNew()
                         ];
                         return SizedBox(
-                          width: size.width, height: GetPlatform.isIOS ? 95 : 80,
+                          width: size.width, 
+                          height: GetPlatform.isIOS ? 95 : 95,
                           child: Stack(children: [
-                            CustomPaint(size: Size(size.width, GetPlatform.isIOS ? 95 : 80), painter: BNBCustomPainter()),
+                            CustomPaint(size: Size(size.width, GetPlatform.isIOS ? 95 : 95), painter: BNBCustomPainter()),
 
                             Center(
                               heightFactor: 3,
@@ -178,22 +179,30 @@ class DashboardScreenState extends State<DashboardScreen> {
                                   //   borderRadius: BorderRadius.circular(30),
                                   // ),
                                   margin: EdgeInsets.only(bottom: GetPlatform.isIOS ? 0 : Dimensions.paddingSizeLarge),
-                                  child: FloatingActionButton(
-                                    backgroundColor: _pageIndex == 2 ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-                                    onPressed: () {
-                                      if(isParcel) {
-                                        showModalBottomSheet(
-                                          context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
-                                          builder: (con) => ParcelBottomSheet(parcelCategoryList: Get.find<ParcelController>().parcelCategoryList),
-                                        );
-                                      } else {
-                                        Get.toNamed(RouteHelper.getCartRoute());
-                                      }
-                                    },
-                                    elevation: 5,
-                                    child: isParcel
-                                        ? Icon(CupertinoIcons.add, size: 34, color: Theme.of(context).primaryColor)
-                                        : CartWidget(color: _pageIndex == 2 ? Theme.of(context).cardColor : Theme.of(context).primaryColor, size: 30),
+                                  child: Transform.scale(
+                                    scale: 1.3,
+                                    child: FloatingActionButton(
+                                      
+                                      shape: const CircleBorder(
+                                        // eccentricity: 1
+                                      ),
+                                      // heroTag: 'btn2',
+                                      backgroundColor: _pageIndex == 2 ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
+                                      onPressed: () {
+                                        if(isParcel) {
+                                          showModalBottomSheet(
+                                            context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
+                                            builder: (con) => ParcelBottomSheet(parcelCategoryList: Get.find<ParcelController>().parcelCategoryList),
+                                          );
+                                        } else {
+                                          Get.toNamed(RouteHelper.getCartRoute());
+                                        }
+                                      },
+                                      elevation: 5,
+                                      child: isParcel
+                                          ? Icon(CupertinoIcons.add, size: 34, color: Theme.of(context).primaryColor)
+                                          : CartWidget(color: _pageIndex == 2 ? Theme.of(context).cardColor : Theme.of(context).primaryColor, size: 30),
+                                    ),
                                   ),
                               ),
                             ),
@@ -203,11 +212,16 @@ class DashboardScreenState extends State<DashboardScreen> {
                                   margin: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
                                   width: size.width, height: 85,
                                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                                    BottomNavItem(title: 'home'.tr, iconData: CupertinoIcons.home, isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
-                                    BottomNavItem(title: isParcel ? 'chat'.tr : 'favourite'.tr, iconData: isParcel ? CupertinoIcons.bubble_left_bubble_right_fill : CupertinoIcons.heart, isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
+                                    BottomNavItem(title: 'home'.tr, 
+                                    iconData: _pageIndex == 0 ? CupertinoIcons.house_fill:   CupertinoIcons.house, 
+                                    isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
+                                    BottomNavItem(title: isParcel ? 'chat'.tr : 'favourite'.tr, iconData: _pageIndex == 1 ? CupertinoIcons.heart_fill : CupertinoIcons.heart , isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
                                     Container(width: size.width * 0.2),
-                                    BottomNavItem(title: 'orders'.tr, iconData: CupertinoIcons.bag, isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
-                                    BottomNavItem(title: 'menu'.tr, iconData: Icons.menu, isSelected: _pageIndex == 4, onTap: () => _setPage(4)),
+                                    BottomNavItem(title: 'orders'.tr, 
+                                    iconData: _pageIndex == 3 ? CupertinoIcons.bag_fill : CupertinoIcons.bag, 
+                                    isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
+                                    BottomNavItem(title: 'menu'.tr,
+                                     iconData: _pageIndex == 4 ? Icons.menu_open : Icons.menu, isSelected: _pageIndex == 4, onTap: () => _setPage(4)),
                                   ]),
                               ),
                             ),
@@ -270,4 +284,6 @@ class DashboardScreenState extends State<DashboardScreen> {
         : Theme.of(context).disabledColor.withOpacity(0.5), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)));
   }
 }
+
+
 

@@ -312,19 +312,19 @@ class _NewPassScreenState extends State<NewPassScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.white,
+      // backgroundColor:  Colors.white,
       
       body: Stack(
         fit: StackFit.expand,
         children: [
           // Background Image
-          // Container(
-          //   color: Colors.white,
-          // ),
-          // Image.asset(
-          //   'assets/image/background.png', // Replace with your background image path
-          //   fit: BoxFit.cover,
-          // ),
+          Container(
+            color: Colors.white,
+          ),
+          Image.asset(
+            'assets/image/background.png', // Replace with your background image path
+            fit: BoxFit.cover,
+          ),
           // Content
           Center(
             child:  Column(

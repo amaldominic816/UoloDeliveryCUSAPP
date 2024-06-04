@@ -300,7 +300,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
   void initState() {
     super.initState();
 
-       Future.delayed( const Duration(milliseconds: 1500), () {
+       Future.delayed( const Duration(seconds: 1 ), () {
       _resetPassword(); 
     }
       
@@ -312,14 +312,15 @@ class _NewPassScreenState extends State<NewPassScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Colors.white,
       
       body: Stack(
         fit: StackFit.expand,
         children: [
           // Background Image
-          Container(
-            color: Colors.white,
-          ),
+          // Container(
+          //   color: Colors.white,
+          // ),
           // Image.asset(
           //   'assets/image/background.png', // Replace with your background image path
           //   fit: BoxFit.cover,

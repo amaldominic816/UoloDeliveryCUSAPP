@@ -133,7 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
       Color appBarColor = Colors.blue; // Default color
 
       return Scaffold(
-        appBar: ResponsiveHelper.isDesktop(context) ? const WebMenuBar() : null,
+        appBar:
+        
+         ResponsiveHelper.isDesktop(context) ? const WebMenuBar() : null,
         endDrawer: const MenuDrawer(), endDrawerEnableOpenDragGesture: false,
         backgroundColor: Theme.of(context).colorScheme.background,
         body: /*isTaxiBooking ? const RiderHomeScreen() :*/ isParcel ? const ParcelCategoryScreen() : SafeArea(
@@ -424,7 +426,9 @@ Expanded(child: Text(
                           totalSize: storeController.storeModel != null ? storeController.storeModel!.totalSize : null,
                           offset: storeController.storeModel != null ? storeController.storeModel!.offset : null,
                           onPaginate: (int? offset) async => await storeController.getStoreList(offset!, false),
-                          itemView: ItemsView(
+                          itemView: 
+                          
+                          ItemsView(
                             isStore: true, items: null,
                             isFoodOrGrocery: (isFood || isGrocery),
                             stores: storeController.storeModel != null ? storeController.storeModel!.stores : null,
@@ -441,6 +445,7 @@ Expanded(child: Text(
                     ]) : ModuleView(splashController: splashController),
                   )),
                 ),
+             
               ],
             ),
           ),

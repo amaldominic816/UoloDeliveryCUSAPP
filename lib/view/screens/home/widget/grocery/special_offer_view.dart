@@ -37,6 +37,7 @@ class SpecialOfferView extends StatelessWidget {
             SizedBox(
               height: 285, width: Get.width,
               child: ListView.builder(
+                
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault),

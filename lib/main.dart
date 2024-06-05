@@ -133,6 +133,7 @@ class _MyAppState extends State<MyApp> {
               dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
             ),
             theme: themeController.darkTheme ? dark() : light(),
+            
             locale: localizeController.locale,
             translations: Messages(languages: widget.languages),
             fallbackLocale: Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode),

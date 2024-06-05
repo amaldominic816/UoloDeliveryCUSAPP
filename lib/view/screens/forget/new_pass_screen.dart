@@ -321,10 +321,10 @@ class _NewPassScreenState extends State<NewPassScreen> {
           Container(
             color: Colors.white,
           ),
-          Image.asset(
-            'assets/image/background.png', // Replace with your background image path
-            fit: BoxFit.cover,
-          ),
+          // Image.asset(
+          //   'assets/image/background.png', // Replace with your background image path
+          //   fit: BoxFit.cover,
+          // ),
           // Content
           Center(
             child:  Column(

@@ -165,9 +165,9 @@ class DashboardScreenState extends State<DashboardScreen> {
                         ];
                         return SizedBox(
                           width: size.width, 
-                          height: GetPlatform.isIOS ? 95 : 85,
+                          height: GetPlatform.isIOS ? 95 : 80,
                           child: Stack(children: [
-                            CustomPaint(size: Size(size.width, GetPlatform.isIOS ? 95 : 85), painter: BNBCustomPainter()),
+                            CustomPaint(size: Size(size.width, GetPlatform.isIOS ? 95 : 80), painter: BNBCustomPainter()),
 
                             Center(
                               heightFactor: 3,

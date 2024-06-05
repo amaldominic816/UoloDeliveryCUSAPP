@@ -31,6 +31,7 @@ class _WebMenuBarState extends State<WebMenuBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       width: Dimensions.webMaxWidth,
       color: Theme.of(context).cardColor,
       padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),

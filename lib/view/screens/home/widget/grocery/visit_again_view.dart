@@ -28,28 +28,49 @@ class _VisitAgainViewState extends State<VisitAgainView> {
         padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeDefault),
         child: Stack(clipBehavior: Clip.none, children: [
 
-            Container(
-              height: 150, width: double.infinity,
-              color: Theme.of(context).primaryColor,
-            ),
+            // Container(
+            //   height: 100, 
+            //   width: double.infinity,
+            //   color:
+            //   Colors.white
+            //   //  Theme.of(context).disabledColor.withOpacity(0.1)
+            //   // Theme.of(context).primaryColor
+            //   ,
+            // ),
 
             Padding(
-              padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
+              padding: const EdgeInsets.only(top:
+              
+              0
+              //  Dimensions.paddingSizeSmall
+               ),
               child: Column(children: [
 
-                Text(widget.fromFood! ? "wanna_try_again".tr : "visit_again".tr, style: robotoBold.copyWith(color: Theme.of(context).cardColor)),
+                Text(widget.fromFood! ? "wanna_try_again".tr : "visit_again".tr, style: robotoBold.copyWith(
+                  color: 
+                  // Theme.of(context).cardColor
+                  Theme.of(context).primaryColor
+                  )
+                  ),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
 
                 Text(
                   'get_your_recent_purchase_from_the_shop_you_recently_visited'.tr,
-                  style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall),
+                  style: robotoRegular.copyWith(
+                    color: 
+                    // Theme.of(context).cardColor
+                    Theme.of(context).primaryColor
+                    , fontSize: Dimensions.fontSizeSmall),
                 ),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
 
                 CarouselSlider.builder(
                   itemCount: stores.length,
                   options: CarouselOptions(
-                    aspectRatio: 2.0,
+                    // pauseAutoPlayInFiniteScroll: true ,
+                     autoPlay: true,
+                    // enlargeFactor: 8 ,
+                    aspectRatio: 3.5,
                     enlargeCenterPage: true,
                     disableCenter: true,
                   ),
@@ -60,17 +81,19 @@ class _VisitAgainViewState extends State<VisitAgainView> {
               ]),
             ),
 
-          const Positioned(
-            top: 20, left: 10,
-            child: TriangleWidget(),
-          ),
+          // const Positioned(
+          //   top: 20, left: 10,
+          //   child: TriangleWidget(),
+          // ),
 
-          const Positioned(
-            top: 10, right: 100,
-            child: TriangleWidget(),
-          ),
+          // const Positioned(
+          //   top: 10, right: 100,
+          //   child: TriangleWidget(),
+          // ),
         ]),
-      ) : const SizedBox() : const VisitAgainShimmerView();
+      ) : const SizedBox() :
+      
+       const VisitAgainShimmerView();
     });
   }
 }

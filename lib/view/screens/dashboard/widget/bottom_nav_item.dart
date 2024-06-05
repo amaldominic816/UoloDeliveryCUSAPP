@@ -22,7 +22,7 @@ class BottomNavItem extends StatelessWidget {
             Icon(
               iconData,
               color: isSelected ? Color(0xff26063b) : const Color(0xff484545),
-              size: 28, // Adjust the size here
+              size: 25, // Adjust the size here
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,

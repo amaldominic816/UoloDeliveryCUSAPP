@@ -649,7 +649,7 @@ class VisitAgainCard extends StatelessWidget {
 //   ),
 // )
 
-
+ fromFood ?   
 Align(
   alignment: Alignment.topRight,
   child: Container(
@@ -695,7 +695,10 @@ Align(
       ],
     ),
   ),
-)
+):  AddFavouriteView(
+          top: 15, right: 30,
+          item: Item(id: store.id),
+        ),
 
       ]),
     );

@@ -28,21 +28,21 @@ class _VisitAgainViewState extends State<VisitAgainView> {
         padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeDefault),
         child: Stack(clipBehavior: Clip.none, children: [
 
-            // Container(
-            //   height: 100, 
-            //   width: double.infinity,
-            //   color:
-            //   Colors.white
-            //   //  Theme.of(context).disabledColor.withOpacity(0.1)
-            //   // Theme.of(context).primaryColor
-            //   ,
-            // ),
+            Container(
+              height: 100, 
+              width: double.infinity,
+              color:
+              // Colors.white
+               Theme.of(context).disabledColor.withOpacity(0.1)
+              // Theme.of(context).primaryColor
+              ,
+            ),
 
             Padding(
               padding: const EdgeInsets.only(top:
               
-              0
-              //  Dimensions.paddingSizeSmall
+              
+               Dimensions.paddingSizeSmall
                ),
               child: Column(children: [
 
